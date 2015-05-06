@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="deposit_accounts_2_EXTERNAL.json" xmlns:sdoc="http://soa.com/wsdl/doc" xmlns:shttp="http://soa.com/wsdl/http" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="deposit_accounts_2_EXTERNAL.json" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wsdl:service name="deposit_accounts">
+    <wsdl:port name="deposit_accounts_port" binding="tns:deposit_accounts_Binding">
+    <shttp:address location="http://dummy.com/testwebapp"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

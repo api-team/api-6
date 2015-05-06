@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="deposit_accounts_2_EXTERNAL.json" xmlns:shttp="http://soa.com/wsdl/http" xmlns:sdoc="http://soa.com/wsdl/doc" xmlns:tns="deposit_accounts_2_EXTERNAL.json" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wsdl:message name="searchAccountsRequestMessage">
+    <wsdl:part name="Api-Key" type="xs:string">
+    </wsdl:part>
+    <wsdl:part name="User-Id" type="xs:string">
+    </wsdl:part>
+    <wsdl:part name="SSOID" type="xs:string">
+    </wsdl:part>
+    <wsdl:part name="Client-Correlation-Id" type="xs:string">
+    </wsdl:part>
+    <wsdl:part name="select" type="xs:any">
+    </wsdl:part>
+    <wsdl:part name="accountNumbers" type="xs:string">
+    </wsdl:part>
+    <wsdl:part name="whenDuplicateAccountsFound" type="xs:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="searchAccountsResponseMessage">
+    <wsdl:part name="response" type="xs:any">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retrieveAccountDetailsRequestMessage">
+    <wsdl:part name="Api-Key" type="xs:string">
+    </wsdl:part>
+    <wsdl:part name="User-Id" type="xs:string">
+    </wsdl:part>
+    <wsdl:part name="SSOID" type="xs:string">
+    </wsdl:part>
+    <wsdl:part name="Client-Correlation-Id" type="xs:string">
+    </wsdl:part>
+    <wsdl:part name="select" type="xs:any">
+    </wsdl:part>
+    <wsdl:part name="accountReferenceId" type="xs:any">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retrieveAccountDetailsResponseMessage">
+    <wsdl:part name="response" type="xs:any">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="deposit_accounts_PortType">
+    <wsdl:operation name="retrieveAccountDetails">
+<wsdl:documentation><sdoc:displayName>retrieveAccountDetails</sdoc:displayName></wsdl:documentation>
+      <wsdl:input message="tns:retrieveAccountDetailsRequestMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:retrieveAccountDetailsResponseMessage">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchAccounts">
+<wsdl:documentation><sdoc:displayName>searchAccounts</sdoc:displayName></wsdl:documentation>
+      <wsdl:input message="tns:searchAccountsRequestMessage">
+    </wsdl:input>
+      <wsdl:output message="tns:searchAccountsResponseMessage">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

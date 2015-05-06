@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="deposit_accounts_2_EXTERNAL.json" xmlns:shttp="http://soa.com/wsdl/http" xmlns:sdoc="http://soa.com/wsdl/doc" xmlns:tns="deposit_accounts_2_EXTERNAL.json" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <wsdl:binding name="deposit_accounts_Binding" type="tns:deposit_accounts_PortType">
+    <shttp:binding/>
+    <wsdl:operation name="retrieveAccountDetails">
+<wsdl:documentation><sdoc:displayName>retrieveAccountDetails</sdoc:displayName><sdoc:description><![CDATA[Get a single Deposit Account (Checking, Savings, Money Market) resource.]]></sdoc:description><sdoc:summary><![CDATA[Search for a specific Deposit Account (Checking, Savings, Money Market) with the provided ID.]]></sdoc:summary><sdoc:response code="200" message="Successful."/><sdoc:response code="404" message="No deposit accounts found for the given account reference identifier."/><sdoc:response code="500" message="Internal Server Error : The server encountered an unexpected condition which prevented it from fulfilling the request."/></wsdl:documentation>
+    <shttp:operation location="/deposits/accounts/{accountReferenceId}" method="GET" outputSerialization="application/json; v=1,application/xml; v=1,application/javascript; v=1"/>
+      <wsdl:input>
+    <shttp:input name="Api-Key" part="Api-Key" type="header"><wsdl:documentation><sdoc:description><![CDATA[Token used to identify the calling application to which Capital One has granted permission to call this API. (e.g. MOBILE, EOS, IRIS, IPS, RTM, and WALLET)]]></sdoc:description><sdoc:required>true</sdoc:required><sdoc:multiple>false</sdoc:multiple></wsdl:documentation></shttp:input>
+    <shttp:input name="User-Id" part="User-Id" type="header"><wsdl:documentation><sdoc:description><![CDATA[Unique identifier of the end user making the request. This could be a customer service representative, or the customer themselves. Used for audit purposes. (e.g. abc123)]]></sdoc:description><sdoc:required>false</sdoc:required><sdoc:multiple>false</sdoc:multiple></wsdl:documentation></shttp:input>
+    <shttp:input name="SSOID" part="SSOID" type="header"><wsdl:documentation><sdoc:description><![CDATA[Unique identifier for the user (not the username) (e.g. 8709874d3ff873e94b7dc678c12487a2)]]></sdoc:description><sdoc:required>false</sdoc:required><sdoc:multiple>false</sdoc:multiple></wsdl:documentation></shttp:input>
+    <shttp:input name="Client-Correlation-Id" part="Client-Correlation-Id" type="header"><wsdl:documentation><sdoc:description><![CDATA[A parameter that passes with request header]]></sdoc:description><sdoc:required>false</sdoc:required><sdoc:multiple>false</sdoc:multiple></wsdl:documentation></shttp:input>
+    <shttp:input name="select" part="select" type="query"><wsdl:documentation><sdoc:description><![CDATA[Select]]></sdoc:description><sdoc:required>false</sdoc:required><sdoc:multiple>true</sdoc:multiple></wsdl:documentation></shttp:input>
+    <shttp:input name="accountReferenceId" part="accountReferenceId" type="path"><wsdl:documentation><sdoc:description><![CDATA[The unique identifier for the deposit account resource that can be used to locate this resource.]]></sdoc:description><sdoc:required>true</sdoc:required><sdoc:multiple>false</sdoc:multiple></wsdl:documentation></shttp:input>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="searchAccounts">
+<wsdl:documentation><sdoc:displayName>searchAccounts</sdoc:displayName><sdoc:description><![CDATA[Search for deposit accounts given the search parameters.]]></sdoc:description><sdoc:summary><![CDATA[Search for deposit accounts given the search parameters. Currently only accountNumbers (comma separated list of upto 5 account numbers) is supported.]]></sdoc:summary><sdoc:response code="200" message="Successful."/><sdoc:response code="203" message="Partial Content"/><sdoc:response code="400" message="The request could not be understood by the server due to malformed syntax. The client SHOULD NOT repeat the request without modifications."/><sdoc:response code="500" message="Internal Server Error : The server encountered an unexpected condition which prevented it from fulfilling the request."/></wsdl:documentation>
+    <shttp:operation location="/deposits/accounts" method="GET" outputSerialization="application/json; v=1,application/xml; v=1,application/javascript; v=1"/>
+      <wsdl:input>
+    <shttp:input name="Api-Key" part="Api-Key" type="header"><wsdl:documentation><sdoc:description><![CDATA[Token used to identify the calling application to which Capital One has granted permission to call this API. (e.g. MOBILE, EOS, IRIS, IPS, RTM, and WALLET)]]></sdoc:description><sdoc:required>true</sdoc:required><sdoc:multiple>false</sdoc:multiple></wsdl:documentation></shttp:input>
+    <shttp:input name="User-Id" part="User-Id" type="header"><wsdl:documentation><sdoc:description><![CDATA[Unique identifier of the end user making the request. This could be a customer service representative, or the customer themselves. Used for audit purposes. (e.g. abc123)]]></sdoc:description><sdoc:required>false</sdoc:required><sdoc:multiple>false</sdoc:multiple></wsdl:documentation></shttp:input>
+    <shttp:input name="SSOID" part="SSOID" type="header"><wsdl:documentation><sdoc:description><![CDATA[Unique identifier for the user (not the username) (e.g. 8709874d3ff873e94b7dc678c12487a2)]]></sdoc:description><sdoc:required>false</sdoc:required><sdoc:multiple>false</sdoc:multiple></wsdl:documentation></shttp:input>
+    <shttp:input name="Client-Correlation-Id" part="Client-Correlation-Id" type="header"><wsdl:documentation><sdoc:description><![CDATA[A parameter that passes with request header]]></sdoc:description><sdoc:required>false</sdoc:required><sdoc:multiple>false</sdoc:multiple></wsdl:documentation></shttp:input>
+    <shttp:input name="select" part="select" type="query"><wsdl:documentation><sdoc:description><![CDATA[Select]]></sdoc:description><sdoc:required>false</sdoc:required><sdoc:multiple>true</sdoc:multiple></wsdl:documentation></shttp:input>
+    <shttp:input name="accountNumbers" part="accountNumbers" type="query"><wsdl:documentation><sdoc:description><![CDATA[A comma separated list of account numbers. Currently a maximum of 5 account numbers is supported.]]></sdoc:description><sdoc:required>true</sdoc:required><sdoc:multiple>false</sdoc:multiple></wsdl:documentation></shttp:input>
+    <shttp:input name="whenDuplicateAccountsFound" part="whenDuplicateAccountsFound" type="query"><wsdl:documentation><sdoc:description><![CDATA[Inidicates what action to take when duplicate Deposit/CD accounts are found for a provided account number]]></sdoc:description><sdoc:required>false</sdoc:required><sdoc:multiple>false</sdoc:multiple></wsdl:documentation></shttp:input>
+      </wsdl:input>
+      <wsdl:output>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+</wsdl:definitions>
